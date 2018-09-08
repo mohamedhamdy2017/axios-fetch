@@ -44,10 +44,6 @@ const AlbumDetails = ({album}) => {
         );
     }
 
-const styles = {
-    container : {
 
-    }
-}
 
 export default AlbumDetails;
