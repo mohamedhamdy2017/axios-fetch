@@ -20,7 +20,7 @@ class HomeScreen extends Component {
       </View>
       <Button 
         block
-        onPress= {() => this.props.navigation.navigate('SearchScreen')}
+        onPress= {() => this.props.navigation.navigate('AlbumList')}
         >
       
       <Text style={{color:'white'}} >Search</Text>
