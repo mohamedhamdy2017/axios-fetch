@@ -1,37 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StatusBar, Keyboard , ListView} from 'react-native';
 import { Container, Content } from 'native-base';
-import SearchHeader from './SearchHeader';
 import axios from 'axios';
 import AlbumDetails from './AlbumDetails';
 
-class SearchTab extends Component {
-
-    static navigationOptions = {
-        header: null
-    }
+class AlbumList extends Component {
 
     state = {
-        searchAlbum : '',
         albums: []
     }
 
-    
-
-    albumSearch () {
-        Keyboard.dismiss()
-        
-        let albumsArr = this.state.albums;
-        let searchAlbum = this.state.searchAlbum;
-
-        for(var i =0; i < albumsArr.length; i++) {
-            if(searchAlbum === albumsArr [i].title){
-                this.setState({searchAlbum :  [albumsArr[i]] })
-            }
-        }
+    static navigationOptions = {
+        title: 'A L B U M S     L I S T'
     }
 
-    componentDidMount(){
+    componentWillMount(){
         axios.get('https://rallycoding.herokuapp.com/api/music_albums')
         .then(response => this.setState({albums: response.data}))
     }
@@ -45,14 +27,6 @@ class SearchTab extends Component {
     render(){
         return(
             <Container>
-
-                <SearchHeader
-                    value = {this.state.searchCoffee}
-                    placeholder = "Search Here..."
-                    onChangeText = {(searchAlbum) => this.setState({searchAlbum})}
-                    albumSearch = {this.albumSearch.bind(this)}
-                />
-
                 <Content>
                     {this.renderAlbums()}
                 </Content>
@@ -60,4 +34,4 @@ class SearchTab extends Component {
         )
     }
 }
-export default SearchTab;
+export default AlbumList;
